@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+      <script src="Scripts/angular.js"></script>
+      <script src="Scripts/Script2.js"></script>
+      <link href="Style.css" rel="stylesheet"/>
+    </head>
+<body ng-controller="Controller13">
+<h3>Video 13</h3>
+        <div ng-controller="Controller13">
+            <br> <br>
+<table>
+                 <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                            Salary
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="emp in empos">
+                  <td>{{emp.name}}</td>
+                  <td>{{emp.gender |gender}}</td>
+                  <td>{{emp.salary }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        
+</body>
+        </html>

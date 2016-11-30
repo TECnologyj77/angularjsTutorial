@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html ng-app="myModule" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <script src="Scripts/angular.js"></script>
+      <script src="Scripts/Script.js"></script>
+      <script src="Scripts/stringService.js"></script>
+      <link href="Style.css" rel="stylesheet"/>
+    </head>
+    <body ng-controller="myController" >
+        <div >
+            <hr><h3>Video 3</h3> <br>
+            <div>
+                First Name: {{employee.firstName}}
+            </div>
+            <div>
+                Last Name: {{employee.LastName}}
+            </div>
+            <div>
+                Gender: {{employee.gender}}
+            </div>
+            <hr><h3>Video 2</h3> <br>         
+            {{message}} <br/>
+            <hr><h3>Video 1</h3>  <br> 
+            {{1==2}} <br/>
+            {{1==1}} <br/>
+            {{ {name: 'Thomas', age: '30'}.name }} <br>
+            {{['David', 'Pam', 'Bobert'][2]}}
+        </div>
+        <div>
+            10 + 20 = {{10 + 20}}
+        </div>
+        <hr><h3>Video 4</h3>
+        <div ng-controller="imgController">   
+            <div>
+                Name: {{alien.name}}
+            </div>
+            <div>
+                Race: {{alien.race}}
+            </div>
+            <div>
+                 <img ng-src="{{alien.image}}" 
+                 alt="{{alien.name}}"
+                 style ="height:100px; width:200px;"/>
+            </div>
+         
+             <hr><h3>Video 5</h3>
+
+             <div>
+                 <input type="text" ng-model="greeting"/>
+                 <br/><br/>
+                 {{message}}
+                   <br/><br/>
+                 {{greeting}}
+            </div>
+
+            <table> 
+                <tr>  
+                <td>First Name:</td>
+               <td> <input type="text" ng-model="alien.name"> </td>
+                 </tr>
+                 
+                   <tr>  
+                <td>Race:</td>
+               <td> <input type="text" ng-model="alien.race"> </td>
+                 </tr>
+                   <tr>  
+                <td>Last Name:</td>
+               <td> <input type="text" ng-model="alien.lname"> </td>
+                 </tr>
+            </table>
+            <br>
+
+             <table> 
+                <tr>  
+                <td>First Name:</td>
+               <td>{{alien.name}} </td>
+                 </tr>
+                 
+                   <tr>  
+                <td>Race:</td>
+               <td> {{alien.race}}</td>
+                 </tr>
+                   <tr>  
+                <td>Last Name:</td>
+               <td> {{alien.lname}}</td>
+                 </tr>
+            </table>
+        </div>
+
+        <hr><h3>Video 6</h3>
+        <div ng-controller="ngrepController">
+
+        <table> 
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr ng-repeat="emp in emps">
+                      <td>{{emp.firstName}}</td>
+                      <td>{{emp.lastName}}</td>
+                      <td>{{emp.gender}}</td>
+                      <td>{{emp.salary}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div ng-controller="countryController">
+         <ul>
+             <li ng-repeat = "country in countries" ng-init = "parentIndex = $index">
+               {{country.name}} - Index = {{$index}}
+               <ul>
+                   <li ng-repeat="city in country.cities">
+                       {{city.name}} -Parent Index = {{parentIndex}}, Index = {{$index}}
+                   </li>
+               </ul>
+              </li>
+         </ul>
+           
+        </div>
+
+        <hr><h3>Video 7</h3>
+        <div ng-controller="eventController">
+         
+         <table>    
+         <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Likes</th>
+                 <th>Dislikes</th>
+                 <th>Like/Dislikes</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr ng-repeat ="tech in techs">
+             <td>{{tech.name}}</td>
+             <td>{{tech.likes}}</td>
+             <td>{{tech.dislikes}}</td>
+             <td>
+                <input type = "button" value = "Like" ng-click ="incrementLikes(tech)"/>
+                <input type = "button" value = "Dislike" ng-click ="incrementDislikes(tech)"/>
+             </td>
+             </tr>
+         </tbody>
+
+         </table>
+        </div>
+        <hr><h3>Video 8</h3>
+        <div ng-controller="Controller8">
+      Rows to dislplay: <input type="number" step="1" min="0" max="6" ng-model="rowLimit" />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Salary (number)</th>
+                        <th>Salary (currency)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in empos | limitTo: rowLimit">
+                  <td>{{emp.name | uppercase}}</td>
+                  <td>{{emp.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                  <td>{{emp.gender| lowercase}}</td>
+                  <td>{{emp.salary | number:2 }}</td>
+                  <td>{{emp.salary |currency:"£":1}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr><h3>Video 9</h3>
+        <div ng-controller="Controller9">
+            Sort By: 
+            <select ng-model="sortColumn" >
+                   <option value="name">Name ASC</option>
+                   <option value="gender">Gender ASC</option>
+                   <option value="dateOfBirth">DOB ASC</option>
+                   <option value="-salary">Salary DSC </option>
+                    
+            </select>
+    
+            <table>
+                 <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in empos | orderBy: sortColumn">
+                  <td>{{emp.name}}</td>
+                  <td>{{emp.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                  <td>{{emp.gender}}</td>
+                  <td>{{emp.salary }}</td>
+                </tbody>
+            </table>
+        </div>
+
+        <hr><h3>Video 10-12</h3>
+        <div ng-controller="Controller10">
+            
+      <!--Search: <input type="text" placeholder="Search By Name" ng-model="searchText.name"/>
+              <input type="text" placeholder="Search by Gender" ng-model="searchText.gender"/>
+              <input type="checkbox" ng-model="exactMatch"/> Exact Match-->
+              <input type="text" placeholder="Search By Gender & Name" ng-model="searchText"/>
+                 <br /> <br />
+            <table>
+                 <thead>
+                    <tr>
+                        <th ng-click="sortData('name')">
+                            Name <div ng-class="getSortClass('name')"></div>
+                        </th>
+                        <th ng-click="sortData('dateOfBirth')">
+                            Date of Birth <div ng-class="getSortClass('dateOfBirth')"></div>
+                        </th>
+                        <th ng-click="sortData('gender')">
+                            Gender <div ng-class="getSortClass('gender')"></div>
+                        </th>
+                        <th ng-click="sortData('salary')">
+                            Salary <div ng-class="getSortClass('salary')"></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in empos | orderBy: sortColumn: reverseSort |filter: search">
+                  <td>{{emp.name}}</td>
+                  <td>{{emp.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                  <td>{{emp.gender}}</td>
+                  <td>{{emp.salary }}</td>
+                </tbody>
+            </table>
+        </div>
+       <hr> <h3>Video 13-14</h3>
+        <div ng-controller="Controller13">
+      Hide Gender:<input type="checkbox" ng-model="isHidden">
+            <br> <br>
+<table>
+                 <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th >
+                            Gender
+                        </th>
+                        <th>
+                            Salary
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="emp in empos">
+                  <td>{{emp.name}}</td>
+                  <td ng-hide="isHidden">{{emp.gender}}</td>
+                  <td ng-show="isHidden">####</td>
+                  <td>{{emp.salary }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+<hr><h3>Video 15</h3>
+        <div ng-controller="Controller14">
+
+<table> 
+    <thead> 
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in empos">
+            <td>{{employee.name}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.salary}}</td>
+        </tr>
+    </tbody>
+</table>
+
+  </div>
+
+<hr><h3>Video 16</h3>
+<div ng-controller="Controller14">
+   Select View:
+   <select ng-model="employeeView">
+       <br><br>
+       <option value="EmployeeTable.html">Table</option>
+       <option value="EmployeeList.html">List</option>
+   </select>
+      <div ng-include="employeeView"></div>
+</div>
+<hr><h3>Video 20</h3>
+<div ng-controller="Controller20">
+
+<table>
+    <tr>
+        <td>Your String</td>
+    <td><input type="text" ng-model="input"/></td>
+    </tr>
+    <tr>
+        <td>Result</td>
+        <td><input type="text" ng-model="output"/></td>
+    </tr>
+
+    <tr>
+         <td></td>
+         <td><input type="button" ng-click="transfromString(input)" value="Process String"/></td>
+     </tr>
+</table>
+
+</div>
+    </body>
+</html>

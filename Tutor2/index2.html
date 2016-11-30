@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+    <head>
+      <script src="Scripts/angular.min.js"></script>
+      <script src="Scripts/Script.js"></script>
+    </head>
+    <body ng-controller="myController" >
+        <div >
+            {{message}} <br/>
+            {{1==2}} <br/>
+            {{1==1}} <br/>
+            {{ {name: 'Thomas', age: '30'}.name }} <br>
+            {{['David', 'Pam', 'Bobert'][2]}}
+        </div>
+        <div>
+            10 + 20 = {{10 + 20}}
+        </div>
+    </body>
+</html>
